@@ -180,25 +180,7 @@ public class DoubleLinkedList<E> implements MyList<E> {
 		 *  TODO: Modify get so that the list is traversed from the tail
 		 *  if the given position is past the mid-point of the list.
 		 */
-		Node<E> currentNode;
-		int count = 0;
-		if (position < 0 || position >= currentSize)
-			throw new ListException("Invalid position given");
-		if (position > currentSize / 2) {
-			currentNode = tail;
-			while (count < currentSize - position) {
-				currentNode = currentNode.prev;
-				count++;
-			}
-		}
-		else {
-			currentNode = head;
-			while (count < position) {
-				currentNode = currentNode.next;
-				count++;
-			}
-		}
-		return currentNode.item;
+		
 	}
 
 	/**
