@@ -176,10 +176,36 @@ public class DoubleLinkedList<E> implements MyList<E> {
 	 *
 	 */
 	public E get(int position) {
+		
+		if (position < 0 || position > currentSize) {
+			throw new ListException("");
+		}
+		Node<E> currentItem = this.head;
+		//E value = null;
+		int currentPosition= 0;
+		
+		if(position == 0)
+			return head.item;
+		
+		if(position == this.size()-1)
+			return tail.item;
+		
+		if(position != 0 && position != this.size()){
+			while(currentItem.next != null){
+				if(currentPosition==position)
+					return currentItem.item;
+				else{
+					currentPosition += 1;
+					break;
+				}
+			}
+		
+		}
 		/*
 		 *  TODO: Modify get so that the list is traversed from the tail
 		 *  if the given position is past the mid-point of the list.
 		 */
+		return currentItem.item;
 		
 	}
 
@@ -222,8 +248,26 @@ public class DoubleLinkedList<E> implements MyList<E> {
 	 *         search value, or -1 if the value is not found.
 	 */
 	public int find(E value, int position) {
-		// TODO: Implement me
-		return 0;
+		if (position < 0 || position > currentSize) {
+			throw new ListException("");
+		}
+		
+		
+		
+		int returnValue= -1;
+		int currentPosition = position;
+		
+		Node<E> current= this.head;
+			
+		while(current.next != null){
+			if(current.item == value){
+				 returnValue = currentPosition;
+				 break;
+			}else{
+				currentPosition++;
+				break;
+			}
+		}return returnValue;
 	}
 
 	public void printForward() {
